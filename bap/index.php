@@ -1,5 +1,6 @@
 <?php
 
+
     $host = 'localhost';
     $dbname= 'sqlrefresh';
     $username = 'root';
@@ -33,5 +34,6 @@
 
 
     $dbc = null;
+
 ?>
 
