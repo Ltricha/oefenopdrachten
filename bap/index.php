@@ -1,29 +1,16 @@
 <?php
 
-
-    $host = 'localhost';
-    $dbname= 'sqlrefresh';
-    $username = 'root';
-    $password = '';
     
+function dbConnect() {
 
+    $config = require( __DIR__ . '/config.php' );
 
     try {
-        $dbc = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $dbc = new PDO( 'mysql:host=' . $config['hostname'] . ';dbname=' . $config['database'], $config['username'], $config['password'] );
         echo "Connected to $dbname at $host successfully.";
 
-        $sql = "CREATE TABLE music (
-            id INT(11) AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(100),
-            musicUrl VARCHAR(100),
-            reg_date TIMESTAMP
 
-        );";
-
-        
-        $dbc->exec($sql);
-
-        //$stmt = $dbc->query();
+        return $dbc;
 
 
     } catch (PDOException $pe) {
@@ -34,6 +21,37 @@
 
 
     $dbc = null;
+
+}
+
+
+
+function getSoundtracks() {
+
+    try {
+
+        $dbc = dbConnect();
+        $sql = ('SELECT titel, artiest, album, duur, afbeelding FROM afspeellijst');
+        $statement = $dbc->query($sql);
+        $soundtracks = [];
+
+        foreach($statement as $soundtrack) {
+            array_push($soundtrack);
+        }
+
+
+    } catch( PDOException $e) {
+
+    }
+
+
+
+}
+
+
+
+
+
 
 ?>
 
