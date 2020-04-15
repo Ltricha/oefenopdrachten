@@ -3,11 +3,11 @@
     
 function dbConnect() {
 
-    $config = require( __DIR__ . '/config.php' );
+    $config = require( __DIR__ . '/src/config.php' );
 
     try {
-        $dbc = new PDO( 'mysql:host=' . $config['hostname'] . ';dbname=' . $config['database'], $config['username'], $config['password'] );
-        echo "Connected to $dbname at $host successfully.";
+        $dbc = new PDO( 'mysql:host=' . $config['host'] . '; dbname=' . $config['database'], $config['username'], $config['password'] );
+       // echo "Connected to $config['database'] at $config['host'] successfully.";
 
 
         return $dbc;
@@ -36,9 +36,10 @@ function getSoundtracks() {
         $soundtracks = [];
 
         foreach($statement as $soundtrack) {
-            array_push($soundtrack);
+            array_push($soundtracks, $soundtrack);
         }
 
+        print_r($soundtracks);
 
     } catch( PDOException $e) {
 
@@ -50,7 +51,7 @@ function getSoundtracks() {
 
 
 
-
+getSoundtracks();
 
 
 ?>
