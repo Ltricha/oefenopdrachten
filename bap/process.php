@@ -1,9 +1,22 @@
 <?php
+require "index.php";
 
-$title = $_POST['title'];
+$dbc = dbConnect();
 
-$artist = $_POST['artist'];
+//$title = $_POST['title'];
 
-$album = $_POST['album'];
+//$artist = $_POST['artist'];
 
-$duration = $_POST['duration'];
+//$album = $_POST['album'];
+
+//$duration = $_POST['duration'];
+
+ print_r($_POST);
+
+
+
+ function addSoundtrack() {
+
+    $sql = 'INSERT INTO afspeellijst (titel, artiest, album, duur, afbeelding) VALUES'
+
+ }
