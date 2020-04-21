@@ -1,7 +1,7 @@
 <?php require('header.php') ?>
 
 
-<form method="post">
+<form method="post" action="process.php">
     <div>
         <label for="title">Titel</label>
         <input id="title">

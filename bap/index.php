@@ -6,6 +6,7 @@ function dbConnect() {
     $config = require( __DIR__ . '/src/config.php' );
 
     try {
+
         $dbc = new PDO( 'mysql:host=' . $config['host'] . '; dbname=' . $config['database'], $config['username'], $config['password'] );
        // echo "Connected to $config['database'] at $config['host'] successfully.";
 
@@ -40,6 +41,8 @@ function getSoundtracks() {
         }
 
         print_r($soundtracks);
+        return $soundtracks;
+
 
     } catch( PDOException $e) {
 
